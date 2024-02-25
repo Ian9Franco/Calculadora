@@ -80,11 +80,10 @@ body {
     
 }
 #borrar{
-    background-color: #e65766;
-
+    background-color: #2600ff44;
 }
 #borrar:hover{
-    background-color: #e6394a;
+    background-color: #43a5bb;
 }
 #C{
     background-color: #5c7c1d;
