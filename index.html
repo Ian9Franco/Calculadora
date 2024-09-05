@@ -1,85 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <link rel="icon" href="img/logo.png" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/calculator.png" type="img/icon/cash-flow.png">
+    <title>Calculatorio</title>
     <link rel="stylesheet" href="css/style.css">
-    <title>Calculadora</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-
-    
-
-    
-
-    <div class="calculadora">
-        <div class="pantalla">0</div>
-        <button id="C" class="btn">C</button>
-        <button id="borrar" class="btn">←</button>
-        <button class="btn">/</button>
-        <button class="btn">*</button>
-        <button class="btn">7</button>
-        <button class="btn">8</button>
-        <button class="btn">9</button>
-        <button class="btn">-</button>
-        <button class="btn">4</button>
-        <button class="btn">5</button>
-        <button class="btn">6</button>
-        <button class="btn">+</button>
-        <button class="btn">1</button>
-        <button class="btn">2</button>
-        <button class="btn">3</button>
-        <button id="igual" class="btn">=</button>
-        <button id="cero" class="btn">0</button>
-        <button class="btn">.</button>
-
+<body class="dark-mode">
+    <h1>CALCULATORIO</h1>
+    <div class="main-container">
+        <div class="calculator-container">
+            <div class="matrix-background"></div>
+            <div class="toggles">
+                <button onclick="toggleDarkMode()" id="theme-toggle" class="toggle-btn">
+                    <i data-lucide="sun" id="sun-icon" class="theme-icon"></i>
+                    <i data-lucide="moon" id="moon-icon" class="theme-icon"></i>
+                </button>
+                <button onclick="toggleScientificMode()" id="scientific-toggle" class="toggle-btn">
+                    <i data-lucide="calculator"></i>
+                </button>
+                <button onclick="toggleHistory()" id="history-toggle" class="toggle-btn">
+                    <i data-lucide="history"></i>
+                </button>
+            </div>
+            <div class="calculator">
+                <div class="display">
+                    <div class="previous-operation"></div>
+                    <div class="current-operation">0</div>
+                </div>
+                <div class="buttons">
+                    <button onclick="handleClearClick()">C</button>
+                    <button onclick="handleOperationClick('/')">/</button>
+                    <button onclick="handleOperationClick('*')">*</button>
+                    <button onclick="handleOperationClick('-')">-</button>
+                    <button onclick="handleNumberClick('7')">7</button>
+                    <button onclick="handleNumberClick('8')">8</button>
+                    <button onclick="handleNumberClick('9')">9</button>
+                    <button onclick="handleOperationClick('+')">+</button>
+                    <button onclick="handleNumberClick('4')">4</button>
+                    <button onclick="handleNumberClick('5')">5</button>
+                    <button onclick="handleNumberClick('6')">6</button>
+                    <button onclick="handleNumberClick('1')">1</button>
+                    <button onclick="handleNumberClick('2')">2</button>
+                    <button onclick="handleNumberClick('3')">3</button>
+                    <button onclick="handleEqualsClick()">=</button>
+                    <button onclick="handleNumberClick('0')">0</button>
+                    <button onclick="handleNumberClick('.')">.</button>
+                </div>
+                <div class="scientific-buttons" style="display: none;">
+                    <button onclick="handleOperationClick('Math.sin')">sin</button>
+                    <button onclick="handleOperationClick('Math.cos')">cos</button>
+                    <button onclick="handleOperationClick('Math.tan')">tan</button>
+                    <button onclick="handleOperationClick('Math.log10')">log</button>
+                    <button onclick="handleOperationClick('Math.log')">ln</button>
+                    <button onclick="handleOperationClick('Math.sqrt')">√</button>
+                    <button onclick="handleOperationClick('Math.pow')">^</button>
+                    <button onclick="handleOperationClick('factorial')">!</button>
+                </div>
+            </div>
+            <div id="history-panel" class="history-panel" style="display: none;">
+                <h3>Historial de Cálculos</h3>
+                <ul id="history-list"></ul>
+            </div>
         </div>
-
-
-
-
         
-
-    </div>
-
-    <div class="container">
-        <div class="bubbles">
-            <span style="--i:11;"></span>
-            <span style="--i:12;"></span>
-            <span style="--i:24;"></span>
-            <span style="--i:10;"></span>
-            <span style="--i:14;"></span>
-            <span style="--i:23;"></span>
-            <span style="--i:18;"></span>
-            <span style="--i:16;"></span>
-            <span style="--i:19;"></span>
-            <span style="--i:13;"></span>
-            <span style="--i:17;"></span>
-            <span style="--i:22;"></span>
-            <span style="--i:21;"></span>
-            <span style="--i:15;"></span>
-            <span style="--i:25;"></span>
-            <span style="--i:27;"></span>
-            <span style="--i:29;"></span>
-            <span style="--i:38;"></span>
-            <span style="--i:33;"></span>
-            <span style="--i:35;"></span>
-            <span style="--i:30;"></span>
-            <span style="--i:2;"></span>
-            <span style="--i:6;"></span>
-            <span style="--i:37;"></span>
-            <span style="--i:9;"></span>
-            <span style="--i:39;"></span>
-            <span style="--i:6;"></span>
-            <span style="--i:40;"></span>
+        
+        <div class="projects-container">
+            <h2 class="projects-title">Mis Otros Proyectos</h2>
+            <div class="small-containers">
+                <a href="https://ian9franco.github.io/Conversorio/" target="_blank" class="small-container">
+                    <p id="titulos">Conversorio</p>
+                    <video muted autoplay loop disablepictureinpicture>
+                        <source src="img/videos/conversorio.mp4" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                </a>
+                <a href="https://ian9franco.github.io/tormentica/#/current-location" target="_blank" class="small-container">
+                    <p id="titulos"> Tormentica </p>
+                    <video muted autoplay loop disablepictureinpicture>
+                        <source src="img/videos/tormentica.mp4" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                </a>
+            </div>
         </div>
+        
     </div>
-
-
-  <script src="js/js.js"></script>  
-
+    <footer>
+        <p>Creado por Ian Pontorno &copy; 2023</p>
+        <a href="https://ian9franco.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-briefcase"></i>
+        </a>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
